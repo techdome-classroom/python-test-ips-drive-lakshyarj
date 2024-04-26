@@ -7,7 +7,19 @@ def longest_substring(s: str) -> int:
     the length of the longest substring without repeating characters.
 
     """ 
-    pass
 
+    char_set = set()
+    left = 0
+    result = 0
+    
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        result = max(result, right - left + 1)
+    
+    return result
+#longest_substring('abaabc')
 
 
